@@ -1,0 +1,44 @@
+
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.112.143:3306/sdk_server?useUnicode=true&useSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: root
+    password: 123456
+    driverClassName: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 10
+    minIdle: 10
+    maxActive: 50
+    maxWait: 3000
+    timeBetweenEvictionRunsMillis: 30000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,slf4j
+  servlet:
+    multipart:
+      max-file-size: 10MB
+
+  redis:
+    cluster:
+      nodes: 192.168.112.144:6379,192.168.112.144:6380,192.168.112.144:6381
+      maxRedirects: 3
+redis:
+  timeout: 10000
+  maxIdle: 300
+  maxTotal: 1000
+  maxWaitMillis: 1000
+  minEvictableIdleTimeMillis: 300000
+  numTestsPerEvictionRun: 1024
+  timeBetweenEvictionRunsMillis: 30000
+  testOnBorrow: true
+  testWhileIdle: true
+  password: 123456
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/MybatisConfig.xml
