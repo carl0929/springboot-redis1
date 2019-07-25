@@ -27,17 +27,14 @@ spring:
     cluster:
       nodes: 192.168.112.144:6379,192.168.112.144:6380,192.168.112.144:6381
       maxRedirects: 3
-redis:
-  timeout: 10000
-  maxIdle: 300
-  maxTotal: 1000
-  maxWaitMillis: 1000
-  minEvictableIdleTimeMillis: 300000
-  numTestsPerEvictionRun: 1024
-  timeBetweenEvictionRunsMillis: 30000
-  testOnBorrow: true
-  testWhileIdle: true
-  password: 123456
+    password: 123456
+    timeout: 6000
+    pool:
+      max-idle: 8
+      min-idle: 0
+      max-active: 8
+      max-wait: -1
+
 
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
